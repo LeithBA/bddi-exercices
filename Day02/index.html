@@ -3,18 +3,24 @@
 
 <body>
     <input id="input">
-    <button onclick="addList(false)"></button>
-    <button onclick="addList(true)"></button>
-    <button onclick="deleteElement(true)"></button>
-    <button onclick="deleteElement(false)"></button>
+    <button id="button1"></button>
+    <button id="button2"></button>
+    <button id="button3"></button>
+    <button id="button4"></button>
     <ul id="list"></ul>
 
     <script>
 
+
+        document.getElementById("button1").addEventListener("click", function () { addList(false) });
+        document.getElementById("button2").addEventListener("click", function () { addList(true) });
+        document.getElementById("button3").addEventListener("click", function () { deleteElement(false) });
+        document.getElementById("button4").addEventListener("click", function () { deleteElement(true) });
+
         const ul = document.getElementById("list");
-        const elements = queue.getElementsByTagName('list');
 
         function addList(toEnd) {
+            console.log("test")
             let t = document.getElementById("input").value;
             document.getElementById("input").value = "";
 
@@ -26,14 +32,14 @@
             else
                 ul.append(li);
         }
-        
-        function deleteElement(fromEnd)
-        {
+
+        function deleteElement(fromEnd) {
             if (fromEnd)
                 ul.removeChild(ul.lastChild);
-            else   
+            else
                 ul.removeChild(ul.firstChild);
         }
+
     </script>
 </body>
 
