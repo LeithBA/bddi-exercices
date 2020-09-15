@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <input id="input">
+    <button onclick="addList(false)"></button>
+    <button onclick="addList(true)"></button>
+    <button onclick="deleteElement(true)"></button>
+    <button onclick="deleteElement(false)"></button>
+    <ul id="list"></ul>
+
+    <script>
+
+        const ul = document.getElementById("list");
+        const elements = queue.getElementsByTagName('list');
+
+        function addList(toEnd) {
+            let t = document.getElementById("input").value;
+            document.getElementById("input").value = "";
+
+            let li = document.createElement("li");
+            li.appendChild(document.createTextNode(t));
+
+            if (toEnd)
+                ul.prepend(li);
+            else
+                ul.append(li);
+        }
+        
+        function deleteElement(fromEnd)
+        {
+            if (fromEnd)
+                ul.removeChild(ul.lastChild);
+            else   
+                ul.removeChild(ul.firstChild);
+        }
+    </script>
+</body>
+
+</html>
