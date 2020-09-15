@@ -13,16 +13,28 @@
     const ctx = canvas.getContext("2d");
 
     var time = 0;
-    var speed = 0.01;
+    var speed = 0.003;
 
     function animate() {
         requestAnimationFrame(animate);
         canvas.width = canvas.width
-        ctx.moveTo(canvas.width/2, canvas.height/2);
-        ctx.lineTo(canvas.width/2 + Math.cos(time) * 200, 
-                   canvas.height/2 + Math.sin(time) * 200);
+        let startX = canvas.width / 2
+        let startY = canvas.height / 2
+
+        for (let i = 1; i < 100; i++) {
+            ctx.moveTo(startX, startY);
+
+            let endX = startX + Math.cos(time * i) * i * 5;
+            let endY = startY + Math.sin(time * i) * i * 5;
+
+            ctx.lineTo(endX, endY);
+
+            startX = endX;
+            startY = endY;
+        }
+
         ctx.stroke();
-        console.log("updating");
+
         time += speed;
     }
 
